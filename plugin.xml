@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:rim="http://www.blackberry.com/ns/widgets"
+	id="com.example.custom-camera"
+	version="0.0.1">
+
+<name>Shopeel Camera</name>
+<description>PhoneGap plugin to support a custom camera overlay</description>
+<author>Shane Carr and others</author>
+
+<info>
+	This plugin was written with the tutorial found at http://codrspace.com/vote539/writing-a-custom-camera-plugin-for-phonegap/
+</info>
+
+<js-module src="www/custom_camera.js" name="CustomCamera">
+	<clobbers target="navigator.CustomCamera" />
+</js-module>
+
+<engines>
+	<engine name="cordova" version=">=3.1.0" />
+</engines>
+
+<platform name="ios">
+
+	<!-- config file -->
+	<config-file target="config.xml" parent="/*">
+		<feature name="CustomCamera">
+			<param name="ios-package" value="CustomCamera" />
+		</feature>
+	</config-file>
+
+	<!-- core CustomCamera header and source files -->
+	<header-file src="platforms/ios/CustomCamera/Classes/CustomCamera.h" />
+	<header-file src="platforms/ios/CustomCamera/Classes/CustomCameraViewController.h" />
+	<source-file src="platforms/ios/CustomCamera/Classes/CustomCamera.m" />
+	<source-file src="platforms/ios/CustomCamera/Classes/CustomCameraViewController.m" />
+	<resource-file src="platforms/ios/CustomCamera/Classes/CustomCameraViewController.xib" />
+
+</platform>
+
+</plugin>
