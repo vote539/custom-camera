@@ -1,3 +1,7 @@
+# Writing a Custom Camera Plugin for PhoneGap
+
+Original text at http://codrspace.com/vote539/writing-a-custom-camera-plugin-for-phonegap/
+
 [PhoneGap](http://phonegap.com/) (the brand name of [Apache Cordova](http://cordova.apache.org/)) is a great tool for writing cross platform mobile applications.  With JavaScript and rendering engines getting faster by the minute, we're quickly approaching the time when many apps can be written exclusively on the web platform without needing to dive into Objective-C and Java for iOS and Android.
 
 Like all great things in life, though, PhoneGap has its limitations.  For example, the abstraction away from Cocoa Touch means that the UI of your application is not automatically updated with new versions of iOS.  But perhaps the most clearly defined limitation is the integration with native components.  PhoneGap does a good job of abstracting things like [contacts](http://docs.phonegap.com/en/edge/cordova_contacts_contacts.md.html) and the [accelerometer](http://docs.phonegap.com/en/edge/cordova_accelerometer_accelerometer.md.html), but it struggles with native components that require more than just an API.
