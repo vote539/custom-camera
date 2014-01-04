@@ -1,12 +1,8 @@
-# Writing a Custom Camera Plugin for PhoneGap
-
-Original text at http://codrspace.com/vote539/writing-a-custom-camera-plugin-for-phonegap/
-
 [PhoneGap](http://phonegap.com/) (the brand name of [Apache Cordova](http://cordova.apache.org/)) is a great tool for writing cross platform mobile applications.  With JavaScript and rendering engines getting faster by the minute, we're quickly approaching the time when many apps can be written exclusively on the web platform without needing to dive into Objective-C and Java for iOS and Android.
 
 Like all great things in life, though, PhoneGap has its limitations.  For example, the abstraction away from Cocoa Touch means that the UI of your application is not automatically updated with new versions of iOS.  But perhaps the most clearly defined limitation is the integration with native components.  PhoneGap does a good job of abstracting things like [contacts](http://docs.phonegap.com/en/edge/cordova_contacts_contacts.md.html) and the [accelerometer](http://docs.phonegap.com/en/edge/cordova_accelerometer_accelerometer.md.html), but it struggles with native components that require more than just an API.
 
-In this blog post, I will dive into one of these native components: the camera.  I will explain the limitations behind PhoneGap's out-of-the-box implementation of the camera, the steps you need to take to implement a custom camera overlay in iOS, and some tips and tricks along the way.  I assume that you are competent in JavaScript and Objective-C, and that you are developing on a Mac with Xcode installed.  Since the iOS simulator does not have a camera at the time of writing, you will also need a physical iOS device for testing.  Let's get started!
+In this blog post, I will dive into one of these native components: the camera.  I will explain the limitations behind PhoneGap's out-of-the-box implementation of the camera, the steps you need to take to implement a custom camera overlay in iOS, and some tips and tricks along the way.  I assume that you are competent in JavaScript and Objective-C, and that you are developing on a Mac with Xcode installed.  Since the iOS simulator does not have a camera at the time of writing, you will also need a physical iOS device for testing.  If at any time you get lost or your code doesn't work, you can refer to [a working copy of CustomCamera on GitHub](https://github.com/vote539/custom-camera).  Let's get started!
 
 ## The Default PhoneGap Camera
 
@@ -45,6 +41,7 @@ I'm going to do my best to walk you through the process of creating a camera plu
 The first thing we need to do is to create a new empty PhoneGap project and add iOS support.  If you have the [PhoneGap Command Line Interface](http://docs.phonegap.com/en/edge/guide_cli_index.md.html) installed, you just need to run:
 
 ```bash
+# NOTE: Change com.example.custom-camera to something else unique to your organization.
 $ phonegap create custom_camera com.example.custom-camera CustomCamera
 $ cd custom_camera
 $ phonegap local build ios
@@ -305,7 +302,7 @@ The metadata for PhoneGap plugins is stored in *plugin.xml* at the root of the p
 	http://codrspace.com/vote539/writing-a-custom-camera-plugin-for-phonegap/
 </info>
 
-<js-module src="www/custom_camera.js" name="CustomCamera">
+<js-module src="www/js/custom_camera.js" name="CustomCamera">
 	<clobbers target="navigator.CustomCamera" />
 </js-module>
 
@@ -343,7 +340,7 @@ PhoneGap plugins treat the JavaScript file we made like a *module*.  This means 
 Take note of the following lines in `plugin.xml`:
 
 ```xml
-<js-module src="www/custom_camera.js" name="CustomCamera">
+<js-module src="www/js/custom_camera.js" name="CustomCamera">
 	<clobbers target="navigator.CustomCamera" />
 </js-module>
 ```
@@ -380,4 +377,11 @@ $ phonegap local plugin add https://github.com/vote539/custom-camera.git
 
 ## Conclusion
 
-We now have a very basic, working PhoneGap plugin for iOS.  Since the main draw with PhoneGap is cross-platform support, we would need to start at step 3 and write the plugin for all other platforms we want to support, like Android and BlackBerry.
+We now have a very basic, working PhoneGap plugin for iOS!
+
+The next steps would include:
+
+ 1. Add support for Android, Blackberry, Windows Phone, and all other targeted platforms.  You would first need to add said platform to your PhoneGap project, then you would need to refer to the documentation for PhoneGap and your desired platform about how to implement a camera.  Don't forget to modify `plugin.xml` once you're ready!
+ 2. [Package your plugin for the community](http://docs.phonegap.com/en/edge/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide_publishing_plugins).  This might be as easy as `plugman publish /path/to/custom_camera`.  Before you do this, make sure that you use a real reverse URL identifier for your plugin, rather than *com.example.xyz*.
+
+If this tutorial helped you, let me know by posting a comment below!
