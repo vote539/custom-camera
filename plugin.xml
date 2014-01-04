@@ -10,10 +10,11 @@
 <author>Shane Carr and others</author>
 
 <info>
-	This plugin was written with the tutorial found at http://codrspace.com/vote539/writing-a-custom-camera-plugin-for-phonegap/
+	This plugin was written with the tutorial found at
+	http://codrspace.com/vote539/writing-a-custom-camera-plugin-for-phonegap/
 </info>
 
-<js-module src="www/custom_camera.js" name="CustomCamera">
+<js-module src="www/js/custom_camera.js" name="CustomCamera">
 	<clobbers target="navigator.CustomCamera" />
 </js-module>
 
