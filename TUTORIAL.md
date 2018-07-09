@@ -30,7 +30,7 @@ navigator.camera.getPicture(function(imagePath){
 
 However, from the end user's point of view, things are not quite as slick.  On iOS, a modal opens with the same camera overlay as the native UI.  They can choose an image from their preexisting photo albums, or they can snap a new one.  They are then brought to a screen where they can preview the photo and choose to retake it.  Finally, when they submit the image, the modal closes and the JavaScript callback is evaluated.
 
-![default-phonegap-camera.jpg](/site_media/media/eda6646a74e81.jpg)
+![default-phonegap-camera.jpg](/tutorial_images/default-phonegap-camera.jpg)
 
 This is fine for an app where the camera is not a core feature, but for apps where the user spends a significant amount of time taking photos, the default PhoneGap camera might not give a good user experience (UX).
 
@@ -147,7 +147,7 @@ The interface in `CustomCameraViewController.h` should look something like this:
 
 Now we need to make the button that, when tapped, calls the `takePhotoButtonPressed` method.  To do this, open the XIB file with `CustomCameraViewController.h` still open, make a button on the screen, and Control-Drag the button from the XIB file onto the method in the header file.
 
-![xcode-xib-connection.jpg](/site_media/media/36c2142a74ec1.jpg)
+![xcode-xib-connection.jpg](tutorial_images/xcode-xib-connection.jpg)
 
 Gotta say it's a decent GUI that Apple put together!
 
@@ -277,7 +277,7 @@ Phew, that was a lot of Objective-C!  But does it work?
 
 Hook up your iOS device to your computer.  If you haven't yet set up a provisioning profile, do so now.  (For more information on connecting your device to Xcode, ask Google.)  Build and run the app on your device from within Xcode.  Tap the button to open the camera, then tap the button to snap the photo.  The camera overlay should close, and you should see your image within the WebView!
 
-![custom-camera-demo.jpg](/site_media/media/6c3a7fa474fe1.jpg)
+![custom-camera-demo.jpg](tutorial_images/custom-camera-demo.jpg)
 
 The UI could obviously use some improvement, but the guts of the plugin are all there now.
 
